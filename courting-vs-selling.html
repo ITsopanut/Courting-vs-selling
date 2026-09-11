@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>จีบสาว × จีบลูกค้า — เส้นทางเดียวกัน คนละสนาม</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chonburi&family=Charmonman:wght@400;700&family=Prompt:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#140410;
+  --crypt:#21091A;
+  --stone:#341430;
+  --edge:#4A1D3F;
+  --rose:#FF4D79;
+  --candy:#FF87B4;
+  --blush:#FFC2D6;
+  --cream:#FCE9F0;
+  --muted:#C08FA6;
+  --blood:#B3123F;
+  --wick:#FFD9A8;
+  --maxline:62ch;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(120% 60% at 50% 0%, #3A1030 0%, rgba(58,16,48,0) 60%),
+    radial-gradient(90% 50% at 10% 100%, #2B0B22 0%, rgba(43,11,34,0) 55%),
+    var(--ink);
+  color:var(--cream);
+  font-family:'Prompt',system-ui,sans-serif;
+  font-weight:300;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:'Chonburi',serif;font-weight:400;line-height:1.35;margin:0}
+p{margin:0 0 .9em}
+a{color:var(--candy)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:96px 0 76px;overflow:hidden}
+.web{position:absolute;top:0;width:190px;height:190px;opacity:.5;pointer-events:none}
+.web.l{left:0}
+.web.r{right:0;transform:scaleX(-1)}
+.hero-inner{position:relative;text-align:center}
+.hero h1{
+  font-size:clamp(2.4rem,6.6vw,4.4rem);
+  color:var(--blush);
+  text-shadow:0 0 26px rgba(255,77,121,.45), 0 0 60px rgba(255,77,121,.18);
+  letter-spacing:.01em;
+}
+.hero h1 .amp{color:var(--rose);font-size:.75em;vertical-align:.08em;padding:0 .12em}
+.tagline{
+  font-family:'Charmonman',cursive;
+  font-size:clamp(1.15rem,3vw,1.6rem);
+  color:var(--candy);
+  margin-top:14px;
+}
+.hero-lede{
+  max-width:54ch;margin:26px auto 0;color:var(--muted);
+  font-size:1.02rem;
+}
+.candle{margin:38px auto 0;display:block}
+.flame{transform-origin:50% 100%;animation:flick 2.6s ease-in-out infinite}
+@keyframes flick{
+  0%,100%{transform:scaleY(1) scaleX(1) rotate(0deg);opacity:1}
+  30%{transform:scaleY(1.09) scaleX(.94) rotate(-2.5deg);opacity:.9}
+  62%{transform:scaleY(.95) scaleX(1.05) rotate(2deg);opacity:1}
+}
+
+/* ---------- THESIS ---------- */
+.thesis{
+  margin:0 auto 82px;max-width:760px;text-align:center;
+  border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);
+  padding:44px 26px;
+}
+.thesis .big{
+  font-family:'Chonburi',serif;
+  font-size:clamp(1.35rem,3.4vw,2rem);
+  line-height:1.6;color:var(--cream);
+}
+.thesis .big em{font-style:normal;color:var(--rose)}
+.thesis p.sub{margin-top:18px;color:var(--muted);max-width:56ch;margin-inline:auto}
+
+/* ---------- COLUMN HEADS ---------- */
+.heads{
+  display:grid;grid-template-columns:1fr 132px 1fr;gap:0;
+  align-items:end;margin-bottom:10px;position:sticky;top:0;z-index:5;
+  background:linear-gradient(to bottom, var(--ink) 62%, rgba(20,4,16,0));
+  padding:14px 0 20px;
+}
+.head{text-align:center}
+.head .k{font-family:'Chonburi',serif;font-size:clamp(1.05rem,2.6vw,1.5rem)}
+.head.left .k{color:var(--candy)}
+.head.right .k{color:var(--blush)}
+.head .s{font-size:.8rem;color:var(--muted);letter-spacing:.02em}
+.head.mid{color:var(--edge);font-size:.78rem}
+
+/* ---------- RUNGS ---------- */
+.rung{
+  display:grid;grid-template-columns:1fr 132px 1fr;
+  align-items:stretch;position:relative;
+}
+.spine{position:relative;display:flex;flex-direction:column;align-items:center;padding:0 6px}
+.spine::before{
+  content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;
+  background:linear-gradient(to bottom,var(--edge),var(--rose),var(--edge));
+  opacity:.65;
+}
+.orb{
+  position:relative;z-index:2;margin-top:34px;
+  width:46px;height:46px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--ink);border:2px solid var(--rose);
+  color:var(--blush);font-family:'Chonburi',serif;font-size:1.1rem;
+  box-shadow:0 0 22px rgba(255,77,121,.4);
+}
+.law{
+  position:relative;z-index:2;background:var(--ink);
+  margin:14px 0 0;padding:10px 4px;text-align:center;
+  font-size:.86rem;line-height:1.6;color:var(--blush);
+}
+.law span{display:block;font-size:.7rem;color:var(--muted);margin-bottom:2px}
+
+.card{padding:34px 26px 30px;max-width:var(--maxline)}
+.card.l{margin-left:auto;text-align:right}
+.card.r{margin-right:auto}
+.card h3{font-size:1.18rem;color:var(--cream);margin-bottom:10px}
+.card.l h3{color:var(--candy)}
+.card.r h3{color:var(--blush)}
+.card p{font-size:.97rem;color:#EBD3DE}
+.yield{
+  display:inline-block;margin-top:6px;font-size:.85rem;color:var(--rose);
+  border-top:1px dashed var(--edge);padding-top:8px;
+}
+.yield b{font-weight:500;color:var(--candy)}
+
+details{margin-top:14px;border-left:2px solid var(--edge);padding-left:14px}
+.card.l details{border-left:0;border-right:2px solid var(--edge);padding-left:0;padding-right:14px}
+summary{
+  cursor:pointer;font-size:.86rem;color:var(--muted);list-style:none;
+  padding:2px 0;transition:color .18s ease;
+}
+summary::-webkit-details-marker{display:none}
+summary:hover,summary:focus-visible{color:var(--candy)}
+details[open] summary{color:var(--rose)}
+details ul{margin:8px 0 2px;padding:0 0 0 18px;font-size:.9rem;color:var(--muted)}
+.card.l details ul{padding:0 18px 0 0;list-style-position:inside}
+details li{margin-bottom:5px}
+
+/* ---------- SECTIONS ---------- */
+.sec{padding:86px 0 10px}
+.sec-head{text-align:center;margin-bottom:42px}
+.sec-head h2{font-size:clamp(1.6rem,4.2vw,2.4rem);color:var(--blush)}
+.sec-head p{color:var(--muted);max-width:52ch;margin:12px auto 0;font-size:.98rem}
+
+.ghosts{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:20px}
+.ghost{
+  background:linear-gradient(180deg,var(--crypt),rgba(33,9,26,.35));
+  border:1px solid var(--edge);border-radius:14px 14px 26px 26px;
+  padding:24px 22px 26px;
+}
+.ghost h3{font-size:1.05rem;color:var(--candy);margin-bottom:8px}
+.ghost p{font-size:.92rem;color:#E3C9D6}
+.ghost .fix{font-size:.86rem;color:var(--muted);border-top:1px solid var(--edge);padding-top:10px;margin:12px 0 0}
+.ghost .fix b{color:var(--rose);font-weight:500}
+
+.graves{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;align-items:end}
+.grave{
+  background:var(--stone);border:1px solid var(--edge);border-bottom:none;
+  border-radius:96px 96px 6px 6px;
+  padding:34px 20px 24px;text-align:center;
+}
+.grave .rip{font-family:'Chonburi',serif;color:var(--blood);font-size:.9rem;letter-spacing:.22em}
+.grave h3{font-size:1rem;color:var(--blush);margin:8px 0 6px}
+.grave p{font-size:.85rem;color:var(--muted);margin:0}
+
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.diff{border:1px solid var(--blood);border-radius:12px;padding:24px 22px;background:rgba(179,18,63,.07)}
+.diff h3{font-size:1rem;color:var(--blood);margin-bottom:8px}
+.diff p{font-size:.92rem;color:#E9D0DA;margin:0}
+
+.closing{
+  margin:90px auto 40px;max-width:640px;text-align:center;
+  border-top:1px solid var(--edge);padding-top:46px;
+}
+.closing .q{
+  font-family:'Charmonman',cursive;font-size:clamp(1.4rem,3.6vw,2rem);
+  color:var(--blush);line-height:1.6;
+}
+.closing p{color:var(--muted);font-size:.95rem;margin-top:18px}
+footer{padding:40px 0 70px;text-align:center;color:var(--edge);font-size:.8rem}
+
+/* ---------- MOBILE ---------- */
+@media (max-width:820px){
+  .heads{display:none}
+  .rung{grid-template-columns:1fr;border-bottom:1px solid var(--edge);padding-bottom:26px;margin-bottom:8px}
+  .spine{flex-direction:row;align-items:center;gap:14px;padding:22px 0 4px;justify-content:flex-start}
+  .spine::before{display:none}
+  .orb{margin-top:0;flex:0 0 auto}
+  .law{margin:0;text-align:left;padding:0}
+  .card{max-width:100%;padding:18px 0 0}
+  .card.l,.card.r{margin:0;text-align:left}
+  .card.l details{border-right:0;border-left:2px solid var(--edge);padding-right:0;padding-left:14px}
+  .card.l details ul{padding:0 0 0 18px;list-style-position:outside}
+  .card::before{
+    display:inline-block;margin-bottom:6px;font-size:.72rem;letter-spacing:.06em;
+    color:var(--muted);border:1px solid var(--edge);border-radius:20px;padding:2px 12px;
+  }
+  .card.l::before{content:"ฝั่งจีบสาว";color:var(--candy)}
+  .card.r::before{content:"ฝั่งลูกค้า";color:var(--blush)}
+  .web{width:120px;height:120px}
+}
+@media (prefers-reduced-motion:reduce){
+  .flame{animation:none}
+  html{scroll-behavior:auto}
+}
+:focus-visible{outline:2px solid var(--candy);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="web l" viewBox="0 0 200 200" aria-hidden="true">
+    <g fill="none" stroke="#FF87B4" stroke-width="1.1" opacity=".75">
+      <path d="M0 0 L200 130 M0 0 L150 200 M0 0 L200 40 M0 0 L60 200 M0 0 L200 200"/>
+      <path d="M40 12 Q26 26 12 40 M75 24 Q48 48 24 75 M112 38 Q70 70 38 112 M150 52 Q92 92 52 150"/>
+    </g>
+  </svg>
+  <svg class="web r" viewBox="0 0 200 200" aria-hidden="true">
+    <g fill="none" stroke="#FF87B4" stroke-width="1.1" opacity=".75">
+      <path d="M0 0 L200 130 M0 0 L150 200 M0 0 L200 40 M0 0 L60 200 M0 0 L200 200"/>
+      <path d="M40 12 Q26 26 12 40 M75 24 Q48 48 24 75 M112 38 Q70 70 38 112 M150 52 Q92 92 52 150"/>
+    </g>
+  </svg>
+
+  <div class="wrap hero-inner">
+    <h1>จีบสาว <span class="amp">×</span> จีบลูกค้า</h1>
+    <p class="tagline">เส้นทางเดียวกัน คนละสนาม</p>
+    <p class="hero-lede">ทั้งสองเรื่องคือการทำให้ “คนที่มีทางเลือกอื่น” ตัดสินใจเลือกเรา — และเลือกเราซ้ำอีก เลื่อนลงเพื่อดูเจ็ดจังหวะที่เดินขนานกันทุกก้าว</p>
+
+    <svg class="candle" width="86" height="120" viewBox="0 0 86 120" aria-hidden="true">
+      <ellipse cx="43" cy="112" rx="30" ry="7" fill="#FF4D79" opacity=".18"/>
+      <rect x="28" y="54" width="30" height="56" rx="6" fill="#341430" stroke="#4A1D3F"/>
+      <path d="M28 62 q7 10 14 0 q7 10 16 -2 v-6 h-30 z" fill="#FFC2D6" opacity=".55"/>
+      <line x1="43" y1="46" x2="43" y2="56" stroke="#4A1D3F" stroke-width="2.5"/>
+      <g class="flame">
+        <path d="M43 8 C54 24 58 32 58 39 a15 15 0 0 1 -30 0 c0 -8 5 -15 15 -31 z" fill="#FF4D79" opacity=".9"/>
+        <path d="M43 20 C49 30 51 34 51 38 a8 8 0 0 1 -16 0 c0 -5 3 -9 8 -18 z" fill="#FFD9A8"/>
+      </g>
+    </svg>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="thesis">
+    <p class="big">การขายที่ดี กับการจีบที่ดี ใช้กลไกเดียวกัน — <em>ค่อย ๆ สร้างความไว้ใจ จนอีกฝ่ายยอมเสี่ยงเลือกเรา</em></p>
+    <p class="sub">สิ่งที่คนทำพลาดก็เหมือนกัน คือรีบข้ามไปขั้นตอนสุดท้ายตั้งแต่ประโยคแรก</p>
+  </section>
+
+  <div class="heads">
+    <div class="head left"><div class="k">จีบสาว</div><div class="s">สนามความรู้สึก</div></div>
+    <div class="head mid">กฎร่วม</div>
+    <div class="head right"><div class="k">เข้าหาลูกค้า</div><div class="s">สนามธุรกิจ</div></div>
+  </div>
+
+  <!-- 1 -->
+  <section class="rung">
+    <div class="card l">
+      <h3>รู้ก่อนว่าตัวเองมีดีอะไร</h3>
+      <p>ก่อนเดินไปหาใคร ต้องตอบตัวเองให้ได้ว่าเราเติมอะไรให้ชีวิตเขาได้ และเขาเข้ากับเราจริงหรือแค่หน้าตาดี</p>
+      <span class="yield"><b>ผล:</b> ไม่เสียเวลากับคนที่ยังไงก็ไม่ใช่</span>
+      <details>
+        <summary>ลงมือทำยังไง</summary>
+        <ul>
+          <li>เขียนสามข้อที่เราให้เขาได้จริง</li>
+          <li>เขียนสามข้อที่เรารับไม่ได้</li>
+          <li>ถ้าตอบไม่ได้ ยังไม่ต้องรีบทัก</li>
+        </ul>
+      </details>
+    </div>
+    <div class="spine">
+      <div class="orb">๑</div>
+      <p class="law"><span>กฎร่วม</span>เสน่ห์เริ่มที่ความชัดเจนว่าเราเป็นใคร</p>
+    </div>
+    <div class="card r">
+      <h3>รู้ก่อนว่าสินค้าเราแก้ปัญหาอะไร</h3>
+      <p>ก่อนยิงแอดหรือโทรหาใคร ต้องตอบให้ได้ว่าเราแก้ปัญหาอะไร และใครคือลูกค้าที่ได้ประโยชน์สูงสุดจากเรา</p>
+      <span class="yield"><b>ผล:</b> ต้นทุนต่อลูกค้าหนึ่งรายต่ำลง ปิดง่ายขึ้น</span>
+      <details>
+        <summary>ลงมือทำยังไง</summary>
+        <ul>
+          <li>นิยามลูกค้าในอุดมคติ (ขนาด ธุรกิจ ปัญหา งบ)</li>
+          <li>เขียนคุณค่าเป็นประโยคเดียวที่ลูกค้าพูดตามได้</li>
+          <li>คัดลูกค้าที่ไม่ใช่ออกตั้งแต่ต้นทาง</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="rung">
+    <div class="card l">
+      <h3>ทำการบ้านก่อนทัก</h3>
+      <p>รู้ว่าเขาสนใจอะไร กำลังเจอเรื่องอะไรอยู่ อยู่ในวงไหน — ไม่ใช่ทักไปว่า “สวยจัง” เหมือนอีกร้อยคน</p>
+      <span class="yield"><b>ผล:</b> ประโยคแรกไม่ซ้ำใคร เลยไม่ถูกเมิน</span>
+      <details>
+        <summary>ลงมือทำยังไง</summary>
+        <ul>
+          <li>สังเกตสิ่งที่เขาใส่ใจจริง ไม่ใช่แค่รูปโปรไฟล์</li>
+          <li>หาจุดร่วมที่มีอยู่แล้ว เพื่อน งานอดิเรก ที่ทำงาน</li>
+          <li>จำสิ่งที่เขาเคยบอก แล้วใช้ในครั้งถัดไป</li>
+        </ul>
+      </details>
+    </div>
+    <div class="spine">
+      <div class="orb">๒</div>
+      <p class="law"><span>กฎร่วม</span>การบ้านที่ทำมา คือความเคารพที่มองเห็นได้</p>
+    </div>
+    <div class="card r">
+      <h3>อ่านธุรกิจเขาก่อนโทร</h3>
+      <p>รู้ว่าเขาทำอะไร ปีนี้เจอแรงกดดันอะไร ใครเป็นคนตัดสินใจจริง — ไม่ใช่ส่งโบรชัวร์ตัวเดียวกันให้ทุกคน</p>
+      <span class="yield"><b>ผล:</b> อัตราการตอบกลับสูงขึ้นชัดเจน</span>
+      <details>
+        <summary>ลงมือทำยังไง</summary>
+        <ul>
+          <li>ดูข่าว งบ หรือประกาศรับสมัครงานของเขา</li>
+          <li>หาว่าใครเซ็น ใครใช้จริง ใครคัดค้าน</li>
+          <li>เตรียมสมมติฐานปัญหาไว้หนึ่งข้อ แล้วไปถามว่าใช่ไหม</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="rung">
+    <div class="card l">
+      <h3>ทักครั้งแรกให้เขาอยากตอบ</h3>
+      <p>เปิดด้วยเรื่องของ “เขา” ไม่ใช่ประวัติของเรา สั้น เบา และง่ายต่อการตอบกลับ</p>
+      <span class="yield"><b>ผล:</b> ได้บทสนทนา ไม่ใช่ได้แค่ข้อความที่ถูกอ่าน</span>
+      <details>
+        <summary>ลงมือทำยังไง</summary>
+        <ul>
+          <li>หนึ่งข้อความ หนึ่งประเด็น</li>
+          <li>ปิดท้ายด้วยคำถามที่ตอบได้ในสิบวินาที</li>
+          <li>อย่ายิงยาวเป็นเรียงความ</li>
+        </ul>
+      </details>
+    </div>
+    <div class="spine">
+      <div class="orb">๓</div>
+      <p class="law"><span>กฎร่วม</span>ข้อความแรกมีหน้าที่เดียว คือทำให้มีข้อความที่สอง</p>
+    </div>
+    <div class="card r">
+      <h3>เปิดการขายด้วยปัญหาของเขา</h3>
+      <p>อีเมลหรือสายแรกไม่ใช่เวทีเปิดตัวบริษัท แต่เป็นการยื่นเบ็ดว่า “เรื่องนี้กวนใจคุณอยู่หรือเปล่า”</p>
+      <span class="yield"><b>ผล:</b> ได้นัดคุย ไม่ใช่ได้ถูกกดวางสาย</span>
+      <details>
+        <summary>ลงมือทำยังไง</summary>
+        <ul>
+          <li>สามบรรทัดพอ: บริบท ปัญหา คำถาม</li>
+          <li>ขอเวลาสิบห้านาที ไม่ใช่ขอให้เขาซื้อ</li>
+          <li>อย่าแนบไฟล์นำเสนอสิบสองหน้าตั้งแต่ยังไม่รู้จักกัน</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="rung">
+    <div class="card l">
+      <h3>ให้ก่อน โดยไม่ทวงคืน</h3>
+      <p>ช่วยเรื่องเล็ก ๆ จำเรื่องที่เขาเล่า อยู่ตรงนั้นตอนเขาแย่ — โดยไม่ตีตั๋วไว้ในใจว่าต้องได้อะไรตอบแทน</p>
+      <span class="yield"><b>ผล:</b> เขานึกถึงเราเป็นคนแรกเวลามีเรื่อง</span>
+      <details>
+        <summary>ลงมือทำยังไง</summary>
+        <ul>
+          <li>ความสม่ำเสมอสำคัญกว่าความหวือหวา</li>
+          <li>ให้ในแบบที่เขาต้องการ ไม่ใช่แบบที่เราอยากให้</li>
+          <li>ถ้าให้แล้วเริ่มรู้สึกว่า “ทำขนาดนี้แล้วนะ” แปลว่าเรากำลังทวง</li>
+        </ul>
+      </details>
+    </div>
+    <div class="spine">
+      <div class="orb">๔</div>
+      <p class="law"><span>กฎร่วม</span>ความไว้ใจสร้างจากการให้ที่ไม่มีเงื่อนไขแนบท้าย</p>
+    </div>
+    <div class="card r">
+      <h3>ให้คุณค่าก่อนขอใบสั่งซื้อ</h3>
+      <p>ส่งข้อมูลที่เขาใช้ได้จริง เคสที่คล้ายธุรกิจเขา ตัวเลขเปรียบเทียบ หรือให้ทดลองใช้ ก่อนจะพูดถึงราคา</p>
+      <span class="yield"><b>ผล:</b> เป็นตัวเลือกแรกในหัวเขาเมื่อถึงเวลาซื้อ</span>
+      <details>
+        <summary>ลงมือทำยังไง</summary>
+        <ul>
+          <li>ทุกครั้งที่ติดต่อ ต้องมีอะไรใหม่ให้เขาเสมอ</li>
+          <li>วางจังหวะติดตามให้พอดี ไม่ใช่ทุกวัน</li>
+          <li>ยอมบอกว่า “เคสนี้เราอาจไม่ใช่คำตอบที่ดีที่สุด” เมื่อมันจริง</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="rung">
+    <div class="card l">
+      <h3>ฟังให้ลึกกว่าที่เขาพูด</h3>
+      <p>“ไม่มีอะไร” มักแปลว่ามีอะไร ฟังเพื่อเข้าใจ ไม่ใช่ฟังไปเตรียมประโยคถัดไปของตัวเองไป</p>
+      <span class="yield"><b>ผล:</b> แก้ถูกจุด ไม่ต้องเดาใจ</span>
+      <details>
+        <summary>ลงมือทำยังไง</summary>
+        <ul>
+          <li>ถามต่ออีกหนึ่งชั้นเสมอ “แล้วรู้สึกยังไง”</li>
+          <li>ทวนสิ่งที่เขาพูดด้วยคำของเรา ให้เขายืนยัน</li>
+          <li>เงียบให้เป็น อย่ารีบเติมช่องว่าง</li>
+        </ul>
+      </details>
+    </div>
+    <div class="spine">
+      <div class="orb">๕</div>
+      <p class="law"><span>กฎร่วม</span>คำปฏิเสธแรก แทบไม่เคยเป็นเหตุผลจริง</p>
+    </div>
+    <div class="card r">
+      <h3>ขุดให้ถึงเหตุผลจริง</h3>
+      <p>“แพงไป” มักแปลว่ายังไม่เห็นคุณค่า หรือคนที่คุยอยู่ไม่ใช่คนตัดสินใจ อย่าเพิ่งรีบลดราคาเพื่อปิดข้อโต้แย้ง</p>
+      <span class="yield"><b>ผล:</b> รักษากำไรไว้ได้ และแก้ปัญหาที่ใช่</span>
+      <details>
+        <summary>ลงมือทำยังไง</summary>
+        <ul>
+          <li>ถามว่า “แพงเมื่อเทียบกับอะไร”</li>
+          <li>หาต้นทุนของการไม่ทำอะไรเลย</li>
+          <li>ยืนยันว่าใครต้องเห็นชอบอีกบ้างก่อนเซ็น</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="rung">
+    <div class="card l">
+      <h3>กล้าถามให้ชัด ในจังหวะที่ใช่</h3>
+      <p>ถ้าไม่กล้าถามว่า “คบกันไหม” ก็จะเป็นเพื่อนสนิทที่คอยดูเขาไปกับคนอื่น และต้องรับคำว่าไม่ให้ได้อย่างมีศักดิ์ศรี</p>
+      <span class="yield"><b>ผล:</b> ได้คำตอบ และได้เวลาของตัวเองคืน</span>
+      <details>
+        <summary>ลงมือทำยังไง</summary>
+        <ul>
+          <li>ถามตรง ๆ แบบสุภาพ ไม่ใช่ใบ้เป็นเดือน</li>
+          <li>ถ้าเขาปฏิเสธ ขอบคุณแล้วถอยอย่างสวยงาม</li>
+          <li>การถอยอย่างมีศักดิ์ศรี เปิดประตูไว้ในอนาคต</li>
+        </ul>
+      </details>
+    </div>
+    <div class="spine">
+      <div class="orb">๖</div>
+      <p class="law"><span>กฎร่วม</span>ความกล้าที่สุภาพ ดีกว่าการรอให้อีกฝ่ายเดาใจ</p>
+    </div>
+    <div class="card r">
+      <h3>ปิดการขายให้เป็น</h3>
+      <p>ถ้าไม่กล้าขอคำตอบ ก็จะเป็นที่ปรึกษาฟรีไปตลอด ขอการตัดสินใจให้ชัด และรับคำว่า “ยังไม่เอา” ได้โดยไม่งอน</p>
+      <span class="yield"><b>ผล:</b> รอบการขายสั้นลง ท่อขายสะอาดขึ้น</span>
+      <details>
+        <summary>ลงมือทำยังไง</summary>
+        <ul>
+          <li>สรุปสิ่งที่ตกลงกัน แล้วเสนอขั้นถัดไปที่เป็นรูปธรรม</li>
+          <li>ทุกการคุยต้องจบด้วยวันนัดครั้งต่อไป</li>
+          <li>ถ้าไม่ใช่ ขอเหตุผลไว้เรียนรู้ แล้วไปต่อ</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="rung">
+    <div class="card l">
+      <h3>วันที่ตกลงกัน ไม่ใช่เส้นชัย</h3>
+      <p>คนที่หายไปหลังจีบติด คือคนที่กำลังจะเสียเขาไป ความรักที่อยู่ยาวเกิดจากสิ่งเล็ก ๆ ที่ทำต่อเนื่องหลังจากนั้น</p>
+      <span class="yield"><b>ผล:</b> ความสัมพันธ์ที่ทนแรงกระแทกได้</span>
+      <details>
+        <summary>ลงมือทำยังไง</summary>
+        <ul>
+          <li>ทำสิ่งที่เคยทำตอนจีบต่อไป</li>
+          <li>ขอโทษให้เป็นและเร็ว เมื่อพลาด</li>
+          <li>ถามเป็นระยะว่าเขาโอเคกับเราไหม</li>
+        </ul>
+      </details>
+    </div>
+    <div class="spine">
+      <div class="orb">๗</div>
+      <p class="law"><span>กฎร่วม</span>ความภักดีเกิดหลังคำว่าตกลง ไม่ใช่ก่อนหน้านั้น</p>
+    </div>
+    <div class="card r">
+      <h3>หลังปิดการขาย คือของจริง</h3>
+      <p>ส่งมอบให้ได้ตามที่พูด ตามผลเอง แก้ปัญหาก่อนที่เขาจะต้องทวง นี่คือจุดที่ลูกค้าเปลี่ยนเป็นคนที่บอกต่อ</p>
+      <span class="yield"><b>ผล:</b> ซื้อซ้ำ ต่อสัญญา และบอกต่อโดยไม่ต้องขอ</span>
+      <details>
+        <summary>ลงมือทำยังไง</summary>
+        <ul>
+          <li>โทรตามผลหลังใช้งานจริง ไม่ใช่แค่ตอนจะต่อสัญญา</li>
+          <li>รายงานผลเป็นตัวเลขให้เขาเอาไปใช้ต่อได้</li>
+          <li>ตอนมีปัญหา คือโอกาสสร้างความภักดีที่ดีที่สุด</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <!-- GHOSTS -->
+  <section class="sec">
+    <div class="sec-head">
+      <h2>ผีสี่ตนที่หลอกหลอนทั้งสองสนาม</h2>
+      <p>เจอเหมือนกัน กลัวเหมือนกัน และรับมือด้วยหลักการเดียวกัน</p>
+    </div>
+    <div class="ghosts">
+      <article class="ghost">
+        <h3>ผีเงียบหาย</h3>
+        <p>อ่านแล้วไม่ตอบ นัดแล้วเลื่อน หายไปเฉย ๆ ทั้งที่คุยกันดีอยู่</p>
+        <p class="fix"><b>รับมือ:</b> ตามด้วยของใหม่ที่มีประโยชน์ ไม่ใช่ตามด้วยคำว่า “ยังอยู่ไหม” ครั้งที่ห้า</p>
+      </article>
+      <article class="ghost">
+        <h3>ผีเจ้าเดิม</h3>
+        <p>เขามีคนอยู่แล้ว หรือใช้เจ้าประจำอยู่แล้วมาสิบปี</p>
+        <p class="fix"><b>รับมือ:</b> ห้ามด่าเจ้าเดิม เพราะเท่ากับด่าการตัดสินใจของเขา ให้ถามหาสิ่งที่ยังขาดแทน</p>
+      </article>
+      <article class="ghost">
+        <h3>ผีตื๊อ</h3>
+        <p>ทักทุกวัน โทรทุกเช้า จนความสนใจกลายเป็นความอึดอัด</p>
+        <p class="fix"><b>รับมือ:</b> วัดที่คุณค่าต่อครั้ง ไม่ใช่จำนวนครั้ง ให้พื้นที่เขาคิดถึงเราบ้าง</p>
+      </article>
+      <article class="ghost">
+        <h3>ผีสวมหน้ากาก</h3>
+        <p>เสแสร้งเป็นคนที่เราไม่ได้เป็น หรือสัญญาในสิ่งที่ทำไม่ได้จริง</p>
+        <p class="fix"><b>รับมือ:</b> หน้ากากถูกถอดเสมอ และวันนั้นแพงกว่าดีลที่ได้มามาก</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- GRAVEYARD -->
+  <section class="sec">
+    <div class="sec-head">
+      <h2>สุสานของสิ่งที่ฆ่าได้ทั้งความรักและยอดขาย</h2>
+      <p>ห้าอย่างนี้ให้ผลลัพธ์ระยะสั้น และทำลายทุกอย่างในระยะยาว</p>
+    </div>
+    <div class="graves">
+      <div class="grave"><div class="rip">R I P</div><h3>เร่งให้รีบตัดสินใจ</h3><p>ความกดดันได้คำตอบ แต่ไม่ได้ใจ</p></div>
+      <div class="grave"><div class="rip">R I P</div><h3>สัญญาเกินจริง</h3><p>ความคาดหวังที่ทำไม่ได้ กลายเป็นความผิดหวังทันที</p></div>
+      <div class="grave"><div class="rip">R I P</div><h3>ลดคุณค่าตัวเอง</h3><p>ลดราคาเพื่อให้ถูกเลือก คือสอนให้เขาไม่เห็นค่า</p></div>
+      <div class="grave"><div class="rip">R I P</div><h3>ได้แล้วหายไป</h3><p>จุดที่ความภักดีตายเร็วที่สุด</p></div>
+      <div class="grave"><div class="rip">R I P</div><h3>พูดถึงแต่ตัวเอง</h3><p>ไม่มีใครอยากฟังโบรชัวร์ที่พูดได้</p></div>
+    </div>
+  </section>
+
+  <!-- DIFFERENCES -->
+  <section class="sec">
+    <div class="sec-head">
+      <h2>แต่สามจุดนี้ เอามาเทียบกันไม่ได้</h2>
+      <p>ถ้าไม่แยกให้ออก การเปรียบเทียบนี้จะกลายเป็นเรื่องอันตราย</p>
+    </div>
+    <div class="split">
+      <article class="diff">
+        <h3>ลูกค้าจ่ายเงิน คนรักไม่ได้จ่าย</h3>
+        <p>เทคนิคปิดการขายใช้กับคนที่กำลังตัดสินใจเชิงธุรกิจได้ แต่ถ้าเอา “เทคนิค” ไปใช้กับความรู้สึกของคน มันไม่ใช่การจีบ มันคือการหลอก</p>
+      </article>
+      <article class="diff">
+        <h3>ธุรกิจขยายได้ ความรักขยายไม่ได้</h3>
+        <p>ลูกค้ามีได้พันราย แต่ความสัมพันธ์แบบนี้มีได้คนเดียว สิ่งที่เรียกว่าท่อการขายในธุรกิจ เรียกว่าการหลายใจในความรัก</p>
+      </article>
+      <article class="diff">
+        <h3>ธุรกิจวัดผล ความรักวัดไม่ได้</h3>
+        <p>ยอดขายมีตัวเลขบอกว่าสำเร็จหรือไม่ แต่ถ้าเริ่มตั้งเป้าหมายรายไตรมาสให้ความสัมพันธ์ แปลว่าหลงทางแล้ว</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="closing">
+    <p class="q">คนที่ชนะทั้งสองสนาม<br>ไม่ใช่คนที่พูดเก่งที่สุด<br>แต่เป็นคนที่ยังอยู่ตรงนั้น<br>หลังจากได้คำว่าตกลงแล้ว</p>
+    <p>เจ็ดจังหวะข้างบนใช้ได้กับทั้งสองฝั่ง เพราะทั้งคู่ตั้งอยู่บนสิ่งเดียวกัน — ความไว้ใจที่สร้างช้า และพังเร็ว</p>
+  </section>
+
+</main>
+
+<footer>ทำเป็นสไลด์เดียวจบ เลื่อนดูได้ทั้งบนจอคอมและมือถือ</footer>
+
+</body>
+</html>
